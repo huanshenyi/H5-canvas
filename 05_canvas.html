@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#canvas{
+				background:#272822 ;
+				margin: 10px auto;
+				display: block;
+				position: relative;
+			}
+		</style>
+	</head>
+	<body>
+		色:<input type="color"  id="color"/>
+		太さ:<input type="range"  id="range" min="1" max="20" value="3"/><span id="number">3</span>
+		消しゴム<input type="button" id="kesigomu" value="消しゴム"/>
+		<canvas id="canvas" width="950" height="550">
+		
+			
+		</canvas>
+	</body>
+	<script type="text/javascript">
+		var canvas = document.getElementById("canvas");
+		var cv = canvas.getContext("2d");
+		cv.strokeStyle ="yellow";
+		cv.lineWidth = 5;
+		//キャッパスにマウスクリック事件を追加
+		canvas.onmousedown=function(e){
+			var ev = window.event || e;
+			var mousex = ev.layerX || ev.offsetX;
+			var mousey = ev.layerY || ev.offsetY;
+			cv.beginPath();
+			//スタート時点を設定
+			cv.moveTo(mousex,mousey);
+			canvas.onmousemove = function(){
+				//マウスの最新位置を取得
+				var ev = window.event || e;
+				
+				var newx = ev.layerX || ev.offsetX;
+				var newy = ev.layerY || ev.offsetY;
+				cv.lineTo(newx,newy);
+				cv.stroke();
+			}
+		}
+		//マウスクリック解除事件s
+		canvas.onmouseup = function(){
+			canvas.onmousemove=null;
+			cv.closePath();
+		}
+		//色変換
+		document.getElementById("color").onchange = function(){
+		      cv.strokeStyle= this.value;
+		}
+		//太さの変化
+		document.getElementById('range').onchange=function(){
+			cv.lineWidth = this.value;
+			document.getElementById('number').innerHTML=this.value;
+			
+		}
+		//消しゴム
+	    document.getElementById("kesigomu").onclick = function(){
+		      cv.strokeStyle= '#272822';
+		}
+		
+	</script>
+</html>

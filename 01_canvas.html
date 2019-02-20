@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#canvas{
+				background:#272822 ;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width="950" height="550">
+		
+			
+		</canvas>
+	</body>
+	<script type="text/javascript">
+		var canvas = document.getElementById("canvas");
+		var cv = canvas.getContext("2d");
+		//中身の色を指定
+		cv.fillStyle = "yellow";
+		//長方形を描く
+		cv.fillRect(200,100,500,300);
+		//枠線色の指定
+		cv.strokeStyle = "mediumpurple"
+		//枠線の太さを指定
+		cv.lineWidth =5;
+		//空芯の長方形を描く
+		cv.strokeRect(300,200,300,150);
+		//内容を削除
+		cv.clearRect(260,150,250,200);
+		
+	</script>
+</html>

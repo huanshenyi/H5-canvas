@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#canvas{
+				background:#272822 ;
+				margin: 10px auto;
+				display: block;
+				position: relative;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width="950" height="550">
+		
+			
+		</canvas>
+	</body>
+	<script type="text/javascript">
+		var canvas = document.getElementById("canvas");
+		var cv = canvas.getContext("2d");
+		cv.strokeStyle ="yellow";
+		cv.lineWidth = 5;
+		//キャッパスにマウスクリック事件を追加
+		canvas.onmousedown=function(e){
+			var ev = window.event || e;
+			var mousex = ev.layerX || ev.offsetX;
+			var mousey = ev.layerY || ev.offsetY;
+			cv.moveTo(mousex,mousey);
+			canvas.onmousemove = function(){
+				//マウスの最新位置を取得
+				var ev = window.event || e;
+				
+				var newx = ev.layerX || ev.offsetX;
+				var newy = ev.layerY || ev.offsetY;
+				cv.lineTo(newx,newy);
+				cv.stroke();
+			}
+		}
+		//マウスクリック解除事件s
+		canvas.onmouseup = function(){
+			canvas.onmousemove=null;
+		}
+	</script>
+</html>

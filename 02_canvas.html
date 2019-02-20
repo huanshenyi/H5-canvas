@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#canvas{
+				background:#272822 ;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width="950" height="550">
+		
+			
+		</canvas>
+	</body>
+	<script type="text/javascript">
+		var canvas = document.getElementById("canvas");
+		var cv = canvas.getContext("2d");
+		//経路スタート
+		cv.beginPath();
+		//スタートの点
+		cv.moveTo(20,20);
+		//終点を指定
+		cv.lineTo(150,300);
+		cv.lineTo(280,20);
+		cv.lineTo(410,300);
+		cv.lineTo(540,20);
+		
+		//線の色
+		cv.strokeStyle="yellow";
+		cv.lineWidth = 5;
+		
+		//線を引く
+		cv.stroke();
+		
+	</script>
+</html>
